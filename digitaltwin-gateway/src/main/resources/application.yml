@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: device
+          uri: lb://digitaltwin-device
+          predicates:
+            - Path=/device/**
+          filters:
+            - StripPrefix=1
+        - id: basic-data
+          uri: lb://digitaltwin-basic-data
+          predicates:
+            - Path=/basic-data/**
+          filters:
+            - StripPrefix=1
