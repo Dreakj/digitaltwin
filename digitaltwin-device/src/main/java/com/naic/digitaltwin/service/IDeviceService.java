@@ -15,4 +15,5 @@ import com.naic.digitaltwin.entity.vo.DeviceVO;
 public interface IDeviceService extends IService<Device> {
     DeviceVO getById(Long id);
 
+    void updateDeviceInfo(DeviceVO deviceVO);
 }

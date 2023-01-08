@@ -15,4 +15,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public abstract class AbstractDeviceCnv {
     public abstract DeviceVO poToVo(Device po);
+    public abstract Device voToPo(DeviceVO vo);
 }

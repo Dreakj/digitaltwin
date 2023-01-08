@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="digitaltwin-basic-data" />
+        <module name="digitaltwin-base" />
         <module name="digitaltwin-device" />
         <module name="api" />
         <module name="common_utils" />
@@ -21,6 +22,7 @@
       <module name="common" options="" />
       <module name="common_utils" options="-parameters" />
       <module name="digitaltwin" options="-parameters" />
+      <module name="digitaltwin-base" options="-parameters" />
       <module name="digitaltwin-basic-data" options="-parameters" />
       <module name="digitaltwin-device" options="-parameters" />
       <module name="digitaltwin-gateway" options="-parameters" />

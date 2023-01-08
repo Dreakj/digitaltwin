@@ -1,5 +1,7 @@
 package com.naic.digitaltwin.controller;
 
+import com.naic.commonutils.R;
+import com.naic.digitaltwin.entity.Vendor;
 import com.naic.digitaltwin.service.IVendorService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +25,13 @@ public class VendorController {
     @GetMapping("{id}")
     public String getVendorNameById(@PathVariable Long id) {
         return vendorService.getById(id).getVendorName();
+    }
+    @ApiOperation(value="通过id修改供应商名称")
+    @PutMapping("updateVendorName")
+    public R updateVendorNameById(@RequestParam Long id,@RequestParam String name) {
+        Vendor vendor = vendorService.getById(id);
+        vendor.setVendorName(name);
+        vendorService.updateById(vendor);
+        return R.ok();
     }
 }
