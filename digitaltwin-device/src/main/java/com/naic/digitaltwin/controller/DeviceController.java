@@ -1,14 +1,12 @@
 package com.naic.digitaltwin.controller;
 
-import com.naic.commonutils.R;
+import com.naic.commonutils.Result;
 import com.naic.digitaltwin.entity.vo.DeviceVO;
 import com.naic.digitaltwin.service.IDeviceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.sound.sampled.Line;
 
 /**
  * <p>
@@ -27,15 +25,15 @@ public class DeviceController {
     private IDeviceService deviceService;
     @ApiOperation("根据设备ID获取设备信息")
     @GetMapping("{id}")
-    public R getDeviceInfoById(@PathVariable Long id){
+    public Result getDeviceInfoById(@PathVariable Long id){
 //        return deviceService.getById(id);
         DeviceVO deviceVOInfo = deviceService.getById(id);
-        return R.ok().data("deviceInfo", deviceVOInfo);
+        return Result.success(deviceVOInfo);
     }
     @ApiOperation(value = "修改产线信息")
     @PutMapping("update")
-    public R updateById(@RequestBody DeviceVO deviceVO){
+    public Result updateById(@RequestBody DeviceVO deviceVO){
         deviceService.updateDeviceInfo(deviceVO);
-        return R.ok();
+        return Result.success();
     }
 }

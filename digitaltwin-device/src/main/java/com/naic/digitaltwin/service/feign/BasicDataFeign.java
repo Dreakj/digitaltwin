@@ -1,12 +1,9 @@
 package com.naic.digitaltwin.service.feign;
 
-import com.naic.commonutils.R;
-import io.swagger.annotations.ApiOperation;
+import com.naic.commonutils.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-
-import javax.sound.sampled.Line;
 
 /**
  * <p>
@@ -28,8 +25,8 @@ public interface BasicDataFeign {
 
 
     @PutMapping("/line/updateLineName")
-    public R updateLineName(@RequestParam("id") Long id,@RequestParam("name") String name);
+    public Result updateLineName(@RequestParam("id") Long id, @RequestParam("name") String name);
 
     @PutMapping("/vendor/updateVendorName")
-    public R updateVendorNameById(@RequestParam("id") Long id,@RequestParam("name") String name);
+    public Result updateVendorNameById(@RequestParam("id") Long id, @RequestParam("name") String name);
 }

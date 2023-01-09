@@ -1,6 +1,6 @@
 package com.naic.digitaltwin.controller;
 
-import com.naic.commonutils.R;
+import com.naic.commonutils.Result;
 import com.naic.digitaltwin.entity.Line;
 import com.naic.digitaltwin.service.ILineService;
 import io.swagger.annotations.ApiOperation;
@@ -35,12 +35,12 @@ public class LineController {
 
     @ApiOperation(value = "通过id修改产线名称")
     @PutMapping("updateLineName")
-    public R updateLineName(@RequestParam Long id,@RequestParam String name) {
+    public Result updateLineName(@RequestParam Long id, @RequestParam String name) {
         Line line = lineService.getById(id);
         line.setName(name);
         line.setUpdateTime(LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.of("UTC+8")));
         lineService.updateById(line);
-        return R.ok();
+        return Result.success();
     }
 
 

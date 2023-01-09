@@ -1,6 +1,6 @@
 package com.naic.digitaltwin.controller;
 
-import com.naic.commonutils.R;
+import com.naic.commonutils.Result;
 import com.naic.digitaltwin.entity.Vendor;
 import com.naic.digitaltwin.service.IVendorService;
 import io.swagger.annotations.ApiOperation;
@@ -28,10 +28,10 @@ public class VendorController {
     }
     @ApiOperation(value="通过id修改供应商名称")
     @PutMapping("updateVendorName")
-    public R updateVendorNameById(@RequestParam Long id,@RequestParam String name) {
+    public Result updateVendorNameById(@RequestParam Long id, @RequestParam String name) {
         Vendor vendor = vendorService.getById(id);
         vendor.setVendorName(name);
         vendorService.updateById(vendor);
-        return R.ok();
+        return Result.success();
     }
 }
