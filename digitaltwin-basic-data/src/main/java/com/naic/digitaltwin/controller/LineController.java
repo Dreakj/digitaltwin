@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -43,5 +44,10 @@ public class LineController {
         return Result.success();
     }
 
-
+    @ApiOperation(value = "通过id获取产线基本信息")
+    @GetMapping("/LineData")
+    public Result getLineData() {
+        List<Line> lines = lineService.list();
+        return Result.success(lines);
+    }
 }

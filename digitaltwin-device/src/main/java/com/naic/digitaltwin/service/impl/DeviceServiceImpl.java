@@ -79,26 +79,29 @@ public class DeviceServiceImpl extends ServiceImpl<DeviceMapper, Device> impleme
         Long lineId = deviceVO.getLineId();
         Long deviceStatusId;
         String deviceStatusName = deviceVO.getDeviceStatusName();
-        if(deviceStatusName.equals("新购买")){
-            deviceStatusId = 0L;
-        }else if (deviceStatusName.equals("生产中")){
-            deviceStatusId = 1L;
-        }else if(deviceStatusName.equals("待机中")){
-            deviceStatusId= 2L;
-        }else if(deviceStatusName.equals("换线中")){
-            deviceStatusId = 3L;
-        }else if(deviceStatusName.equals("维修中")){
-            deviceStatusId = 4L;
-        }else if(deviceStatusName.equals("已报废")){
-            deviceStatusId = 5L;
-        }else{
+        if(deviceStatusName == null) {
             deviceStatusId = 6L;
+        }else{
+            if(deviceStatusName.equals("新购买")){
+                deviceStatusId = 0L;
+            }else if (deviceStatusName.equals("生产中")){
+                deviceStatusId = 1L;
+            }else if(deviceStatusName.equals("待机中")){
+                deviceStatusId= 2L;
+            }else if(deviceStatusName.equals("换线中")){
+                deviceStatusId = 3L;
+            }else if(deviceStatusName.equals("维修中")){
+                deviceStatusId = 4L;
+            }else if(deviceStatusName.equals("已报废")){
+                deviceStatusId = 5L;
+            }else{
+                deviceStatusId = 6L;
+            }
         }
         device.setDeviceStatus(deviceStatusId);
-
         int update = deviceMapper.updateById(device);
         if (update == 0) {
-            throw new digitalException(20001, "修改课程信息失败");
+            throw new digitalException(20001, "修改机器信息失败");
         }
 
         DeviceType deviceType = new DeviceType();
